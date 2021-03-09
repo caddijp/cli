@@ -1,5 +1,6 @@
 const t = require('tap')
 const requireInject = require('require-inject')
+const mockNpm = require('../fixtures/mock-npm')
 
 const packument = spec => {
   const mocks = {
@@ -89,12 +90,13 @@ const outdated = (dir, opts) => {
       packument,
     },
   })
-  return new Outdated({
+  const npm = mockNpm({
     prefix: dir,
     globalDir: `${globalDir}/node_modules`,
-    flatOptions: opts,
+    config: opts,
     output,
   })
+  return new Outdated(npm)
 }
 
 t.beforeEach((done) => {
