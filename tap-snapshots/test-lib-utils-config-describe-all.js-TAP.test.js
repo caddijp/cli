@@ -385,7 +385,7 @@ mistakes, unnecessary performance degradation, and malicious input.
 If you don't have a clear idea of what you want to do, it is strongly
 recommended that you do not use this option!
 
-#### \`foreground-script\`
+#### \`foreground-scripts\`
 
 * Default: false
 * Type: Boolean

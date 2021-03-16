@@ -49,7 +49,7 @@ Array [
   "fetch-retry-mintimeout",
   "fetch-timeout",
   "force",
-  "foreground-script",
+  "foreground-scripts",
   "format-package-lock",
   "fund",
   "git",

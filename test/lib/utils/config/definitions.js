@@ -677,3 +677,21 @@ t.test('detect CI', t => {
   t.equal(defnCIFoo['ci-name'].default, 'foo', 'name of CI when in CI')
   t.end()
 })
+
+t.test('user-agent', t => {
+  const obj = {
+    'user-agent': definitions['user-agent'].default,
+    'npm-version': '1.2.3',
+    'node-version': '9.8.7',
+  }
+  const flat = {}
+  const expectNoCI = `npm/1.2.3 node/9.8.7 ` +
+    `${process.platform} ${process.arch}`
+  definitions['user-agent'].flatten('user-agent', obj, flat)
+  t.equal(flat.userAgent, expectNoCI)
+  obj['ci-name'] = 'foo'
+  const expectCI = `${expectNoCI} ci/foo`
+  definitions['user-agent'].flatten('user-agent', obj, flat)
+  t.equal(flat.userAgent, expectCI)
+  t.end()
+})
